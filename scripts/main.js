@@ -126,7 +126,7 @@ window.addEventListener("load", function () {
   animate(0);
 
   window.addEventListener("keydown", (e) => {
-    if (e.key === "r") {
+    if (e.key === "r" && game.gameOver) {
       restartGame();
     }
   });
