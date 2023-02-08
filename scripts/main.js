@@ -14,6 +14,8 @@ window.addEventListener("load", function () {
     constructor(width, height) {
       this.width = width;
       this.height = height;
+    }
+    start() {
       this.groundMargin = 80;
       this.speed = 0;
       this.maxSpeed = 6;
@@ -103,6 +105,12 @@ window.addEventListener("load", function () {
   }
 
   const game = new Game(canvas.width, canvas.height);
+  game.start();
+
+  function restartGame() {
+    game.start();
+    animate(0);
+  }
 
   let lastTime = 0;
   function animate(timestamp) {
@@ -116,4 +124,10 @@ window.addEventListener("load", function () {
     }
   }
   animate(0);
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "r") {
+      restartGame();
+    }
+  });
 });

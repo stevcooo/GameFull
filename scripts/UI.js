@@ -6,12 +6,6 @@ export default class UI {
     this.livesImage = liveImage;
   }
   draw(context) {
-    context.save();
-    context.shadowOffsetX = 2;
-    context.shadowOffsetY = 2;
-    context.shadowColor = "white";
-    context.shadowBlur = 0;
-
     context.font = this.fontSize + "px " + this.fontFamily;
     context.textAlign = "left";
     context.fillStyle = this.game.fontColor;
@@ -24,7 +18,6 @@ export default class UI {
     for (let i = 0; i < this.game.lives; i++) {
       context.drawImage(this.livesImage, 20 + 25 * i, 95, 25, 25);
     }
-
     // game over
     if (this.game.gameOver) {
       context.textAlign = "center";
@@ -36,9 +29,8 @@ export default class UI {
       } else {
         context.fillText("Game over", this.game.width * 0.5, this.game.height * 0.5 - 20);
         context.font = this.fontSize * 0.7 + "px " + this.fontFamily;
-        context.fillText("Better luck next time", this.game.width * 0.5, this.game.height * 0.5 + 20);
+        context.fillText("Better luck next time, press R to restart the game!", this.game.width * 0.5, this.game.height * 0.5 + 20);
       }
     }
-    context.restore();
   }
 }
