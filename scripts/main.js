@@ -7,8 +7,8 @@ import UI from "./UI.js";
 window.addEventListener("load", function () {
   const canvas = this.document.getElementById("canvas1");
   const ctx = canvas.getContext("2d");
-  canvas.width = 900;
-  canvas.height = 500;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
   class Game {
     constructor(width, height) {
@@ -16,12 +16,12 @@ window.addEventListener("load", function () {
       this.height = height;
     }
     start() {
-      this.groundMargin = 80;
-      this.speed = 0;
-      this.maxSpeed = 6;
       this.background = new Background(this);
+      this.groundMargin = 80 * this.background.scaleFactor;
       this.player = new Player(this);
       this.input = new InputHandler(this);
+      this.speed = 0;
+      this.maxSpeed = 6;
       this.enemies = [];
       this.particles = [];
       this.maxParticles = 50;
